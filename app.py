@@ -17,8 +17,13 @@ api = Api(app)
 
 class Users(Resource):
     def get(self):
-        data = pd.read_csv('users.csv')  # read CSV
-        data = data.to_dict()  # convert dataframe to dictionary
+        data = {'userId': {0: 'a1b', 1: 'a2c', 2: 'b1b', 3: 'b2c'},
+                'name': {0: 'Joe', 1: 'Jenny', 2: 'Jack', 3: 'Jill'},
+                'city': {0: 'Paris', 1: 'London', 2: 'London', 3: 'Berlin'},
+                'locations': {0: "['0001', '0002', '0008']",
+                 1: "['0003', '0004']",
+                 2: "['0003', '0005']",
+                 3: "['0006', '0007']"}}
         return {'data': data}, 200  # return data and 200 OK code
     
 class Locations(Resource):
